@@ -278,6 +278,9 @@ admissionController:
       relabelings: []
 
   tls:
+    ## @param admissionController.tls.useCertManager Specify if cert-namager should create the TLS secret
+    useCertManager: false
+
     ## @param admissionController.tls.caCert TLS CA certificate (Generated using the `genCA` function if not set)
     caCert: ""
 
