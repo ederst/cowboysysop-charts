@@ -31,6 +31,9 @@ commonLabels: {}
 ## @param extraDeploy Array of extra objects to deploy with the release
 extraDeploy: []
 
+## @param setSpecifiedNamespace Set specified namespace explicitly in manifests
+setSpecifiedNamespace: false
+
 ## @section Admission controller parameters
 
 admissionController:

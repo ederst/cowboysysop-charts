@@ -3,6 +3,9 @@ apiVersion: {{ include "common.capabilities.policy.apiVersion" . }}
 kind: PodDisruptionBudget
 metadata:
   name: {{ include "vertical-pod-autoscaler.recommender.fullname" . }}
+  {{- if .Values.setSpecifiedNamespace }}
+  namespace: {{ .Release.Namespace }}
+  {{- end }}
   labels:
     {{- include "vertical-pod-autoscaler.recommender.labels" . | nindent 4 }}
     {{- if .Values.commonLabels }}
