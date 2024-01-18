@@ -31,6 +31,9 @@ commonLabels: {}
 ## @param extraDeploy Array of extra objects to deploy with the release
 extraDeploy: []
 
+## @param setSpecifiedNamespace Set specified namespace explicitly in manifests
+setSpecifiedNamespace: false
+
 ## @section Admission controller parameters
 
 admissionController:
@@ -278,6 +281,9 @@ admissionController:
       relabelings: []
 
   tls:
+    ## @param admissionController.tls.useCertManager Specify if cert-namager should create the TLS secret
+    useCertManager: false
+
     ## @param admissionController.tls.caCert TLS CA certificate (Generated using the `genCA` function if not set)
     caCert: ""
 

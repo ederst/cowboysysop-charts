@@ -2,6 +2,9 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: {{ include "vertical-pod-autoscaler.tests.fullname" . }}
+  {{- if .Values.setSpecifiedNamespace }}
+  namespace: {{ .Release.Namespace }}
+  {{- end }}
   labels:
     {{- include "vertical-pod-autoscaler.tests.labels" . | nindent 4 }}
     {{- if .Values.commonLabels }}
@@ -26,7 +29,7 @@ spec:
           mountPath: /admission-controller-tls-secret
           readOnly: true
       workingDir: /tests
-  restartPolicy: Never
+  restartPolicy: OnFailure
   volumes:
     - name: tests
       configMap:
